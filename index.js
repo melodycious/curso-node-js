@@ -9,7 +9,7 @@ console.log('CPUs:', os.cpus())
 console.log('Memoria libre:', os.freemem() / 1024 / 1024)
 console.log('Memoria total:', os.totalmem() / 1024 / 1024) */
 
-const fs = require('node:fs/promises')
+/* const fs = require('node:fs/promises')
 
 console.log('Leyendo el primer archivo...')
 
@@ -26,4 +26,19 @@ fs.readFile('./clase-1/archivo2.txt', 'utf-8')
     })
 
 
+ */
 
+    const { readFile } = require('node:fs/promises')
+
+async function init () {
+  console.log('Leyendo el primer archivo...')
+  const text = await readFile('./clase-1/archivo.txt', 'utf-8')
+  console.log('primer texto:', text)
+  console.log('--> Hacer cosas mientras lee el archivo...')
+  
+  console.log('Leyendo el segundo archivo...')
+  const secondText = await readFile('./clase-1/archivo2.txt', 'utf-8')
+  console.log('segundo texto:', secondText)    
+}
+
+init()
